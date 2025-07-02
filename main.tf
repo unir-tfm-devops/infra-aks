@@ -25,5 +25,4 @@ module "aks" {
   rbac_aad = false
   role_based_access_control_enabled = false
   log_analytics_workspace_enabled = false
-
 }
