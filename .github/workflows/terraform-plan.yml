@@ -25,10 +25,10 @@ jobs:
       - name: "Build Azure credentials JSON"
         id: build_creds
         run: |
-          CREDS_JSON=$(jq -n --arg clientSecret "$AZURE_CLIENT_SECRET" \
-                              --arg subscriptionId "$AZURE_SUBSCRIPTION_ID" \
-                              --arg tenantId "$AZURE_TENANT_ID" \
-                              --arg clientId "$AZURE_CLIENT_ID" \
+          CREDS_JSON=$(jq -nc --arg clientSecret "$AZURE_CLIENT_SECRET" \
+                           --arg subscriptionId "$AZURE_SUBSCRIPTION_ID" \
+                           --arg tenantId "$AZURE_TENANT_ID" \
+                           --arg clientId "$AZURE_CLIENT_ID" \
           '{clientSecret: $clientSecret, subscriptionId: $subscriptionId, tenantId: $tenantId, clientId: $clientId}')
           echo "creds=$CREDS_JSON" >> $GITHUB_OUTPUT
         env:
