@@ -7,9 +7,9 @@ module "aks" {
   location            = "East US"
 
   kubernetes_version = "1.32"
-  prefix = "unir-tfm"
+  prefix             = "unir-tfm"
 
-  agents_size = "Standard_B2s"
+  agents_size  = "Standard_B2s"
   agents_count = 2
 
   node_pools = {
@@ -17,12 +17,12 @@ module "aks" {
       name       = "default"
       vm_size    = "Standard_B2s"
       node_count = 2
-      mode = "User"
+      mode       = "User"
     }
   }
 
-  identity_type = "SystemAssigned"
-  rbac_aad = false
+  identity_type                     = "SystemAssigned"
+  rbac_aad                          = false
   role_based_access_control_enabled = false
-  log_analytics_workspace_enabled = false
+  log_analytics_workspace_enabled   = false
 }
