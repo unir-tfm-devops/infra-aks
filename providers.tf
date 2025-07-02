@@ -8,11 +8,22 @@ terraform {
       source  = "hashicorp/helm"
       version = "~> 2.17.0"
     }
+    azapi = {
+      source  = "azure/azapi"
+      version = "~> 1.0"
+    }
   }
 }
 
 provider "azurerm" {
   features {}
+  use_cli = false
+  use_oidc = false
+}
+
+provider "azapi" {
+  use_cli = false
+  use_oidc = false
 }
 
 provider "helm" {
