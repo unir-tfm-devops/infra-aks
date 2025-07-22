@@ -1,3 +1,8 @@
+data "azurerm_container_registry" "acr" {
+  name                = "unirtfmdevops"
+  resource_group_name = "unir-tfm-devops-rg"
+}
+
 module "aks" {
   source  = "Azure/aks/azurerm"
   version = "~> 9.0.0"
@@ -25,4 +30,8 @@ module "aks" {
   rbac_aad                          = false
   role_based_access_control_enabled = false
   log_analytics_workspace_enabled   = false
+
+  attached_acr_id_map = {
+    "unirtfmdevops" = data.azurerm_container_registry.acr.id
+  }
 }
